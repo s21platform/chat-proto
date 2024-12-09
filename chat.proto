@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+go_package = "./chat-proto";
+
+service ChatService {
+    rpc GetChat(GetGroupUUID) returns (Messages);
+}
+
+message GetGroupUUID {
+    string uuid = 1;
+}
+
+message Message {
+    string user_uuid = 1;        // uuid пользователя
+    string content = 2;         // само сообщение
+    string sent_at = 3;         // время отправки
+}
+
+message Messages {
+    repeated Message messages = 1;  // список сообщений
+}
