@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-go_package = "./chat-proto";
+option go_package = "./chat-proto";
 
 service ChatService {
-    rpc GetChat(GetGroupUUID) returns (Messages);
+    rpc GetChat(GetChatIn) returns (GetChatOut);
 }
 
-message GetGroupUUID {
+message GetChatIn {
     string uuid = 1;
 }
 
@@ -16,6 +16,6 @@ message Message {
     string sent_at = 3;         // время отправки
 }
 
-message Messages {
+message GetChatOut {
     repeated Message messages = 1;  // список сообщений
 }
