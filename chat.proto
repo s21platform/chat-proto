@@ -11,7 +11,7 @@ message GetChatIn {
 }
 
 message Message {
-    string user_uuid = 1;        // uuid пользователя
+    string uuid = 1;             // uuid пользователя
     string content = 2;         // само сообщение
     string sent_at = 3;         // время отправки
 }
