@@ -3,7 +3,7 @@ syntax = "proto3";
 option go_package = "./chat-proto";
 
 service ChatService {
-    rpc GetChat(GetChatIn) returns (GetChatOut);
+    rpc GetChat(GetChatIn) returns (GetChatOut){};
 }
 
 message GetChatIn {
