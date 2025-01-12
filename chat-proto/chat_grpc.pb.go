@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ChatService_GetChat_FullMethodName = "/ChatService/GetChat"
+	ChatService_GetRecentMessages_FullMethodName = "/ChatService/GetRecentMessages"
 )
 
 // ChatServiceClient is the client API for ChatService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
-	GetChat(ctx context.Context, in *GetChatIn, opts ...grpc.CallOption) (*GetChatOut, error)
+	GetRecentMessages(ctx context.Context, in *GetRecentMessagesIn, opts ...grpc.CallOption) (*GetRecentMessagesOut, error)
 }
 
 type chatServiceClient struct {
@@ -37,10 +37,10 @@ func NewChatServiceClient(cc grpc.ClientConnInterface) ChatServiceClient {
 	return &chatServiceClient{cc}
 }
 
-func (c *chatServiceClient) GetChat(ctx context.Context, in *GetChatIn, opts ...grpc.CallOption) (*GetChatOut, error) {
+func (c *chatServiceClient) GetRecentMessages(ctx context.Context, in *GetRecentMessagesIn, opts ...grpc.CallOption) (*GetRecentMessagesOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetChatOut)
-	err := c.cc.Invoke(ctx, ChatService_GetChat_FullMethodName, in, out, cOpts...)
+	out := new(GetRecentMessagesOut)
+	err := c.cc.Invoke(ctx, ChatService_GetRecentMessages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *chatServiceClient) GetChat(ctx context.Context, in *GetChatIn, opts ...
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
 type ChatServiceServer interface {
-	GetChat(context.Context, *GetChatIn) (*GetChatOut, error)
+	GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -62,8 +62,8 @@ type ChatServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedChatServiceServer struct{}
 
-func (UnimplementedChatServiceServer) GetChat(context.Context, *GetChatIn) (*GetChatOut, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetChat not implemented")
+func (UnimplementedChatServiceServer) GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRecentMessages not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -86,20 +86,20 @@ func RegisterChatServiceServer(s grpc.ServiceRegistrar, srv ChatServiceServer) {
 	s.RegisterService(&ChatService_ServiceDesc, srv)
 }
 
-func _ChatService_GetChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetChatIn)
+func _ChatService_GetRecentMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRecentMessagesIn)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServiceServer).GetChat(ctx, in)
+		return srv.(ChatServiceServer).GetRecentMessages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatService_GetChat_FullMethodName,
+		FullMethod: ChatService_GetRecentMessages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).GetChat(ctx, req.(*GetChatIn))
+		return srv.(ChatServiceServer).GetRecentMessages(ctx, req.(*GetRecentMessagesIn))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ChatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetChat",
-			Handler:    _ChatService_GetChat_Handler,
+			MethodName: "GetRecentMessages",
+			Handler:    _ChatService_GetRecentMessages_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
