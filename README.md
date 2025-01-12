@@ -4,8 +4,8 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
-    - [GetChatIn](#-GetChatIn)
-    - [GetChatOut](#-GetChatOut)
+    - [GetRecentMessagesIn](#-GetRecentMessagesIn)
+    - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
   
     - [ChatService](#-ChatService)
@@ -21,9 +21,9 @@
 
 
 
-<a name="-GetChatIn"></a>
+<a name="-GetRecentMessagesIn"></a>
 
-### GetChatIn
+### GetRecentMessagesIn
 
 
 
@@ -36,9 +36,9 @@
 
 
 
-<a name="-GetChatOut"></a>
+<a name="-GetRecentMessagesOut"></a>
 
-### GetChatOut
+### GetRecentMessagesOut
 
 
 
@@ -81,7 +81,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetChat | [.GetChatIn](#GetChatIn) | [.GetChatOut](#GetChatOut) |  |
+| GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 
  
 
