@@ -4,11 +4,13 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
-    - [EditMessageIn](#-EditMessageIn)
-    - [EditMessageOut](#-EditMessageOut)
+    - [DeleteMessageIn](#-DeleteMessageIn)
+    - [DeleteMessageOut](#-DeleteMessageOut)
     - [GetRecentMessagesIn](#-GetRecentMessagesIn)
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
+  
+    - [DeletionScope](#-DeletionScope)
   
     - [ChatService](#-ChatService)
   
@@ -23,32 +25,31 @@
 
 
 
-<a name="-EditMessageIn"></a>
+<a name="-DeleteMessageIn"></a>
 
-### EditMessageIn
+### DeleteMessageIn
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | uuid_message | [string](#string) |  | uuid сообщения |
-| new_content | [string](#string) |  | новый текст сообщения |
+| scope | [DeletionScope](#DeletionScope) |  | тип удаления: у всех или у себя |
 
 
 
 
 
 
-<a name="-EditMessageOut"></a>
+<a name="-DeleteMessageOut"></a>
 
-### EditMessageOut
+### DeleteMessageOut
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_message | [string](#string) |  | uuid измененного сообщения |
-| new_content | [string](#string) |  | новый текст сообщения |
+| deletion_status | [bool](#bool) |  | статус удаления |
 
 
 
@@ -103,6 +104,18 @@
 
  
 
+
+<a name="-DeletionScope"></a>
+
+### DeletionScope
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SELF | 0 | Удаление у себя |
+| ALL | 1 | Удаление у всех |
+
+
  
 
  
@@ -116,7 +129,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
-| EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
+| DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 
  
 
