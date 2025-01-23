@@ -20,7 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	ChatService_GetRecentMessages_FullMethodName = "/ChatService/GetRecentMessages"
-	ChatService_EditMessage_FullMethodName       = "/ChatService/EditMessage"
+	ChatService_DeleteMessage_FullMethodName     = "/ChatService/DeleteMessage"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -28,7 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
 	GetRecentMessages(ctx context.Context, in *GetRecentMessagesIn, opts ...grpc.CallOption) (*GetRecentMessagesOut, error)
-	EditMessage(ctx context.Context, in *EditMessageIn, opts ...grpc.CallOption) (*EditMessageOut, error)
+	DeleteMessage(ctx context.Context, in *DeleteMessageIn, opts ...grpc.CallOption) (*DeleteMessageOut, error)
 }
 
 type chatServiceClient struct {
@@ -49,10 +49,10 @@ func (c *chatServiceClient) GetRecentMessages(ctx context.Context, in *GetRecent
 	return out, nil
 }
 
-func (c *chatServiceClient) EditMessage(ctx context.Context, in *EditMessageIn, opts ...grpc.CallOption) (*EditMessageOut, error) {
+func (c *chatServiceClient) DeleteMessage(ctx context.Context, in *DeleteMessageIn, opts ...grpc.CallOption) (*DeleteMessageOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditMessageOut)
-	err := c.cc.Invoke(ctx, ChatService_EditMessage_FullMethodName, in, out, cOpts...)
+	out := new(DeleteMessageOut)
+	err := c.cc.Invoke(ctx, ChatService_DeleteMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func (c *chatServiceClient) EditMessage(ctx context.Context, in *EditMessageIn, 
 // for forward compatibility.
 type ChatServiceServer interface {
 	GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error)
-	EditMessage(context.Context, *EditMessageIn) (*EditMessageOut, error)
+	DeleteMessage(context.Context, *DeleteMessageIn) (*DeleteMessageOut, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -78,8 +78,8 @@ type UnimplementedChatServiceServer struct{}
 func (UnimplementedChatServiceServer) GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRecentMessages not implemented")
 }
-func (UnimplementedChatServiceServer) EditMessage(context.Context, *EditMessageIn) (*EditMessageOut, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditMessage not implemented")
+func (UnimplementedChatServiceServer) DeleteMessage(context.Context, *DeleteMessageIn) (*DeleteMessageOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMessage not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -120,20 +120,20 @@ func _ChatService_GetRecentMessages_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ChatService_EditMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditMessageIn)
+func _ChatService_DeleteMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMessageIn)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServiceServer).EditMessage(ctx, in)
+		return srv.(ChatServiceServer).DeleteMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatService_EditMessage_FullMethodName,
+		FullMethod: ChatService_DeleteMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).EditMessage(ctx, req.(*EditMessageIn))
+		return srv.(ChatServiceServer).DeleteMessage(ctx, req.(*DeleteMessageIn))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -150,8 +150,8 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ChatService_GetRecentMessages_Handler,
 		},
 		{
-			MethodName: "EditMessage",
-			Handler:    _ChatService_EditMessage_Handler,
+			MethodName: "DeleteMessage",
+			Handler:    _ChatService_DeleteMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
