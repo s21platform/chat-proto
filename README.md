@@ -4,9 +4,13 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
+    - [DeleteMessageIn](#-DeleteMessageIn)
+    - [DeleteMessageOut](#-DeleteMessageOut)
     - [GetRecentMessagesIn](#-GetRecentMessagesIn)
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
+  
+    - [DeletionScope](#-DeletionScope)
   
     - [ChatService](#-ChatService)
   
@@ -18,6 +22,37 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## chat.proto
+
+
+
+<a name="-DeleteMessageIn"></a>
+
+### DeleteMessageIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid_message | [string](#string) |  | uuid сообщения |
+| scope | [DeletionScope](#DeletionScope) |  | тип удаления: у всех или у себя |
+
+
+
+
+
+
+<a name="-DeleteMessageOut"></a>
+
+### DeleteMessageOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| deletion_status | [bool](#bool) |  | статус удаления |
+
+
+
 
 
 
@@ -69,6 +104,18 @@
 
  
 
+
+<a name="-DeletionScope"></a>
+
+### DeletionScope
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SELF | 0 | Удаление у себя |
+| ALL | 1 | Удаление у всех |
+
+
  
 
  
@@ -82,6 +129,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
+| DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 
  
 
