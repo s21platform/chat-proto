@@ -6,6 +6,8 @@
 - [chat.proto](#chat-proto)
     - [DeleteMessageIn](#-DeleteMessageIn)
     - [DeleteMessageOut](#-DeleteMessageOut)
+    - [EditMessageIn](#-EditMessageIn)
+    - [EditMessageOut](#-EditMessageOut)
     - [GetRecentMessagesIn](#-GetRecentMessagesIn)
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
@@ -50,6 +52,38 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | deletion_status | [bool](#bool) |  | статус удаления |
+
+
+
+
+
+
+<a name="-EditMessageIn"></a>
+
+### EditMessageIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid_message | [string](#string) |  | uuid сообщения |
+| new_content | [string](#string) |  | новый текст сообщения |
+
+
+
+
+
+
+<a name="-EditMessageOut"></a>
+
+### EditMessageOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid_message | [string](#string) |  | uuid измененного сообщения |
+| new_content | [string](#string) |  | новый текст сообщения |
 
 
 
@@ -130,6 +164,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
+| EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
 
  
 
