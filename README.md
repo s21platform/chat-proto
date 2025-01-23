@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
+    - [EditMessageIn](#-EditMessageIn)
+    - [EditMessageOut](#-EditMessageOut)
     - [GetRecentMessagesIn](#-GetRecentMessagesIn)
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
@@ -18,6 +20,38 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## chat.proto
+
+
+
+<a name="-EditMessageIn"></a>
+
+### EditMessageIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid_message | [string](#string) |  | uuid сообщения |
+| new_content | [string](#string) |  | новый текст сообщения |
+
+
+
+
+
+
+<a name="-EditMessageOut"></a>
+
+### EditMessageOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid_message | [string](#string) |  | uuid измененного сообщения |
+| new_content | [string](#string) |  | новый текст сообщения |
+
+
+
 
 
 
@@ -82,6 +116,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
+| EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
 
  
 

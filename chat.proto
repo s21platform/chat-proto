@@ -4,6 +4,7 @@ option go_package = "./chat-proto";
 
 service ChatService {
     rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
+    rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
 }
 
 message GetRecentMessagesIn {
@@ -18,4 +19,14 @@ message Message {
 
 message GetRecentMessagesOut {
     repeated Message messages = 1;  // список сообщений
+}
+
+message EditMessageIn {
+    string uuid_message = 1;    // uuid сообщения
+    string new_content = 2;     // новый текст сообщения
+}
+
+message EditMessageOut {
+    string uuid_message = 1;    // uuid измененного сообщения
+    string new_content = 2;     // новый текст сообщения
 }
