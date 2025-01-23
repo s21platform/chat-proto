@@ -4,6 +4,7 @@ option go_package = "./chat-proto";
 
 service ChatService {
     rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
+    rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
 }
 
 message GetRecentMessagesIn {
@@ -18,4 +19,18 @@ message Message {
 
 message GetRecentMessagesOut {
     repeated Message messages = 1;  // список сообщений
+}
+
+enum DeletionScope {
+    SELF = 0;                       // Удаление у себя
+    ALL = 1;                        // Удаление у всех
+}
+
+message DeleteMessageIn {
+    string uuid_message = 1;        // uuid сообщения
+    DeletionScope scope = 2;        // тип удаления: у всех или у себя
+}
+
+message DeleteMessageOut {
+    bool deletion_status = 1;    // статус удаления
 }
