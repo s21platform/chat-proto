@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	ChatService_CreateChat_FullMethodName        = "/ChatService/CreateChat"
 	ChatService_GetRecentMessages_FullMethodName = "/ChatService/GetRecentMessages"
 	ChatService_DeleteMessage_FullMethodName     = "/ChatService/DeleteMessage"
 	ChatService_EditMessage_FullMethodName       = "/ChatService/EditMessage"
@@ -28,6 +29,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
+	CreateChat(ctx context.Context, in *CreateChatIn, opts ...grpc.CallOption) (*CreateChatOut, error)
 	GetRecentMessages(ctx context.Context, in *GetRecentMessagesIn, opts ...grpc.CallOption) (*GetRecentMessagesOut, error)
 	DeleteMessage(ctx context.Context, in *DeleteMessageIn, opts ...grpc.CallOption) (*DeleteMessageOut, error)
 	EditMessage(ctx context.Context, in *EditMessageIn, opts ...grpc.CallOption) (*EditMessageOut, error)
@@ -39,6 +41,16 @@ type chatServiceClient struct {
 
 func NewChatServiceClient(cc grpc.ClientConnInterface) ChatServiceClient {
 	return &chatServiceClient{cc}
+}
+
+func (c *chatServiceClient) CreateChat(ctx context.Context, in *CreateChatIn, opts ...grpc.CallOption) (*CreateChatOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateChatOut)
+	err := c.cc.Invoke(ctx, ChatService_CreateChat_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *chatServiceClient) GetRecentMessages(ctx context.Context, in *GetRecentMessagesIn, opts ...grpc.CallOption) (*GetRecentMessagesOut, error) {
@@ -75,6 +87,7 @@ func (c *chatServiceClient) EditMessage(ctx context.Context, in *EditMessageIn, 
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
 type ChatServiceServer interface {
+	CreateChat(context.Context, *CreateChatIn) (*CreateChatOut, error)
 	GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error)
 	DeleteMessage(context.Context, *DeleteMessageIn) (*DeleteMessageOut, error)
 	EditMessage(context.Context, *EditMessageIn) (*EditMessageOut, error)
@@ -88,6 +101,9 @@ type ChatServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedChatServiceServer struct{}
 
+func (UnimplementedChatServiceServer) CreateChat(context.Context, *CreateChatIn) (*CreateChatOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateChat not implemented")
+}
 func (UnimplementedChatServiceServer) GetRecentMessages(context.Context, *GetRecentMessagesIn) (*GetRecentMessagesOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRecentMessages not implemented")
 }
@@ -116,6 +132,24 @@ func RegisterChatServiceServer(s grpc.ServiceRegistrar, srv ChatServiceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&ChatService_ServiceDesc, srv)
+}
+
+func _ChatService_CreateChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateChatIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatServiceServer).CreateChat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ChatService_CreateChat_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatServiceServer).CreateChat(ctx, req.(*CreateChatIn))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ChatService_GetRecentMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -179,6 +213,10 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "ChatService",
 	HandlerType: (*ChatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateChat",
+			Handler:    _ChatService_CreateChat_Handler,
+		},
 		{
 			MethodName: "GetRecentMessages",
 			Handler:    _ChatService_GetRecentMessages_Handler,

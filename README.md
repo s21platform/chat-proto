@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
+    - [CreateChatIn](#-CreateChatIn)
+    - [CreateChatOut](#-CreateChatOut)
     - [DeleteMessageIn](#-DeleteMessageIn)
     - [DeleteMessageOut](#-DeleteMessageOut)
     - [EditMessageIn](#-EditMessageIn)
@@ -22,6 +24,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## chat.proto
+
+
+
+<a name="-CreateChatIn"></a>
+
+### CreateChatIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| companion_uuid | [string](#string) |  | uuid второго пользователя, с которым будет идти переписка |
+
+
+
+
+
+
+<a name="-CreateChatOut"></a>
+
+### CreateChatOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| new_chat_uuid | [string](#string) |  | uuid созданного чата |
+
+
+
 
 
 
@@ -148,6 +180,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| CreateChat | [.CreateChatIn](#CreateChatIn) | [.CreateChatOut](#CreateChatOut) |  |
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 | EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
