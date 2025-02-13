@@ -6,6 +6,7 @@ service ChatService {
     rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
     rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
+    rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
 }
 
 message GetRecentMessagesIn {
@@ -39,4 +40,12 @@ message EditMessageIn {
 message EditMessageOut {
     string uuid_message = 1;    // uuid измененного сообщения
     string new_content = 2;     // новый текст сообщения
+}
+
+message CreateChatIn {
+    string uuid_companion = 1;  // uuid второго пользователя, с которым будет идти переписка
+}
+
+message CreateChatOut {
+    string uuid_new_chat = 1; // uuid созданного чата
 }
