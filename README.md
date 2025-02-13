@@ -35,7 +35,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_companion | [string](#string) |  | uuid второго пользователя, с которым будет идти переписка |
+| companion_uuid | [string](#string) |  | uuid второго пользователя, с которым будет идти переписка |
 
 
 
@@ -50,7 +50,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_new_chat | [string](#string) |  | uuid созданного чата |
+| new_chat_uuid | [string](#string) |  | uuid созданного чата |
 
 
 
@@ -180,10 +180,10 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| CreateChat | [.CreateChatIn](#CreateChatIn) | [.CreateChatOut](#CreateChatOut) |  |
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 | EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
-| CreateChat | [.CreateChatIn](#CreateChatIn) | [.CreateChatOut](#CreateChatOut) |  |
 
  
 

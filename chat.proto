@@ -3,10 +3,11 @@ syntax = "proto3";
 option go_package = "./chat-proto";
 
 service ChatService {
+    rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
     rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
+
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
     rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
-    rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
 }
 
 message GetRecentMessagesIn {
@@ -43,9 +44,9 @@ message EditMessageOut {
 }
 
 message CreateChatIn {
-    string uuid_companion = 1;  // uuid второго пользователя, с которым будет идти переписка
+    string companion_uuid = 1;  // uuid второго пользователя, с которым будет идти переписка
 }
 
 message CreateChatOut {
-    string uuid_new_chat = 1; // uuid созданного чата
+    string new_chat_uuid = 1; // uuid созданного чата
 }
