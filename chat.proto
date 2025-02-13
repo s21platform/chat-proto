@@ -4,10 +4,35 @@ option go_package = "./chat-proto";
 
 service ChatService {
     rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
+    rpc GetChats(GetChatsIn) returns (GetChatsOut){};
     rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
 
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
     rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
+}
+
+message CreateChatIn {
+    string companion_uuid = 1;  // uuid второго пользователя, с которым будет идти переписка
+}
+
+message CreateChatOut {
+    string new_chat_uuid = 1; // uuid созданного чата
+}
+
+message GetChatsIn {
+    string uuid = 1;  // UUID пользователя, чьи чаты нужно вернуть
+}
+
+message Chat {
+    string last_message = 1;           // Контент последнего сообщени
+    string chat_name = 2;              // Название чата
+    string avatar_url = 3;             // Аватарка чата
+    string last_message_timestamp = 4; // Время отправки последнего сообщения
+    string chat_uuid = 5;              // UUID чата
+}
+
+message GetChatsOut {
+    repeated Chat chats = 1;  // Список чатов
 }
 
 message GetRecentMessagesIn {
@@ -41,12 +66,4 @@ message EditMessageIn {
 message EditMessageOut {
     string uuid_message = 1;    // uuid измененного сообщения
     string new_content = 2;     // новый текст сообщения
-}
-
-message CreateChatIn {
-    string companion_uuid = 1;  // uuid второго пользователя, с которым будет идти переписка
-}
-
-message CreateChatOut {
-    string new_chat_uuid = 1; // uuid созданного чата
 }
