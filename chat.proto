@@ -22,14 +22,9 @@ message GetRecentMessagesOut {
     repeated Message messages = 1;  // список сообщений
 }
 
-enum DeletionScope {
-    SELF = 0;                       // Удаление у себя
-    ALL = 1;                        // Удаление у всех
-}
-
 message DeleteMessageIn {
     string uuid_message = 1;        // uuid сообщения
-    DeletionScope scope = 2;        // тип удаления: у всех или у себя
+    string mode = 2;        // тип удаления: у всех или у себя
 }
 
 message DeleteMessageOut {
