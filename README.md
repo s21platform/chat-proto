@@ -12,8 +12,6 @@
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
   
-    - [DeletionScope](#-DeletionScope)
-  
     - [ChatService](#-ChatService)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -36,7 +34,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | uuid_message | [string](#string) |  | uuid сообщения |
-| scope | [DeletionScope](#DeletionScope) |  | тип удаления: у всех или у себя |
+| mode | [string](#string) |  | тип удаления: у всех или у себя |
 
 
 
@@ -137,18 +135,6 @@
 
 
  
-
-
-<a name="-DeletionScope"></a>
-
-### DeletionScope
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SELF | 0 | Удаление у себя |
-| ALL | 1 | Удаление у всех |
-
 
  
 
