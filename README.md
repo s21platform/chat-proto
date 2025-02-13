@@ -4,12 +4,15 @@
 ## Table of Contents
 
 - [chat.proto](#chat-proto)
+    - [Chat](#-Chat)
     - [CreateChatIn](#-CreateChatIn)
     - [CreateChatOut](#-CreateChatOut)
     - [DeleteMessageIn](#-DeleteMessageIn)
     - [DeleteMessageOut](#-DeleteMessageOut)
     - [EditMessageIn](#-EditMessageIn)
     - [EditMessageOut](#-EditMessageOut)
+    - [GetChatsIn](#-GetChatsIn)
+    - [GetChatsOut](#-GetChatsOut)
     - [GetRecentMessagesIn](#-GetRecentMessagesIn)
     - [GetRecentMessagesOut](#-GetRecentMessagesOut)
     - [Message](#-Message)
@@ -24,6 +27,25 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## chat.proto
+
+
+
+<a name="-Chat"></a>
+
+### Chat
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| last_message | [string](#string) |  | Контент последнего сообщени |
+| chat_name | [string](#string) |  | Название чата |
+| avatar_url | [string](#string) |  | Аватарка чата |
+| last_message_timestamp | [string](#string) |  | Время отправки последнего сообщения |
+| chat_uuid | [string](#string) |  | UUID чата |
+
+
+
 
 
 
@@ -120,6 +142,36 @@
 
 
 
+<a name="-GetChatsIn"></a>
+
+### GetChatsIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| uuid | [string](#string) |  | UUID пользователя, чьи чаты нужно вернуть |
+
+
+
+
+
+
+<a name="-GetChatsOut"></a>
+
+### GetChatsOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| chats | [Chat](#Chat) | repeated | Список чатов |
+
+
+
+
+
+
 <a name="-GetRecentMessagesIn"></a>
 
 ### GetRecentMessagesIn
@@ -181,6 +233,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateChat | [.CreateChatIn](#CreateChatIn) | [.CreateChatOut](#CreateChatOut) |  |
+| GetChats | [.GetChatsIn](#GetChatsIn) | [.GetChatsOut](#GetChatsOut) |  |
 | GetRecentMessages | [.GetRecentMessagesIn](#GetRecentMessagesIn) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 | EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
