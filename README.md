@@ -38,10 +38,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| last_message | [string](#string) |  | Контент последнего сообщени |
+| last_message | [string](#string) |  | Контент последнего сообщения |
 | chat_name | [string](#string) |  | Название чата |
 | avatar_url | [string](#string) |  | Аватарка чата |
-| last_message_timestamp | [string](#string) |  | Время отправки последнего сообщения |
+| last_message_timestamp | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | Время отправки последнего сообщения |
 | chat_uuid | [string](#string) |  | UUID чата |
 
 
