@@ -4,12 +4,14 @@ option go_package = "./chat-proto";
 
 service ChatService {
     rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
-    rpc GetChats(GetChatsIn) returns (GetChatsOut){};
-    rpc GetRecentMessages(GetRecentMessagesIn) returns (GetRecentMessagesOut){};
+    rpc GetChats(ChatEmpty) returns (GetChatsOut){};
+    rpc GetRecentMessages(ChatEmpty) returns (GetRecentMessagesOut){};
 
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
     rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
 }
+
+message ChatEmpty {}
 
 message CreateChatIn {
     string companion_uuid = 1;  // uuid второго пользователя, с которым будет идти переписка
@@ -19,9 +21,6 @@ message CreateChatOut {
     string new_chat_uuid = 1; // uuid созданного чата
 }
 
-message GetChatsIn {
-    string uuid = 1;  // UUID пользователя, чьи чаты нужно вернуть
-}
 
 message Chat {
     string last_message = 1;           // Контент последнего сообщения
@@ -33,10 +32,6 @@ message Chat {
 
 message GetChatsOut {
     repeated Chat chats = 1;  // Список чатов
-}
-
-message GetRecentMessagesIn {
-    string uuid = 1;
 }
 
 message Message {
