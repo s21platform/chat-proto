@@ -6,8 +6,8 @@
 - [chat.proto](#chat-proto)
     - [Chat](#-Chat)
     - [ChatEmpty](#-ChatEmpty)
-    - [CreateChatIn](#-CreateChatIn)
-    - [CreateChatOut](#-CreateChatOut)
+    - [CreatePrivateChatIn](#-CreatePrivateChatIn)
+    - [CreatePrivateChatOut](#-CreatePrivateChatOut)
     - [DeleteMessageIn](#-DeleteMessageIn)
     - [DeleteMessageOut](#-DeleteMessageOut)
     - [EditMessageIn](#-EditMessageIn)
@@ -58,9 +58,9 @@
 
 
 
-<a name="-CreateChatIn"></a>
+<a name="-CreatePrivateChatIn"></a>
 
-### CreateChatIn
+### CreatePrivateChatIn
 
 
 
@@ -73,9 +73,9 @@
 
 
 
-<a name="-CreateChatOut"></a>
+<a name="-CreatePrivateChatOut"></a>
 
-### CreateChatOut
+### CreatePrivateChatOut
 
 
 
@@ -211,7 +211,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateChat | [.CreateChatIn](#CreateChatIn) | [.CreateChatOut](#CreateChatOut) |  |
+| CreatePrivateChat | [.CreatePrivateChatIn](#CreatePrivateChatIn) | [.CreatePrivateChatOut](#CreatePrivateChatOut) |  |
 | GetChats | [.ChatEmpty](#ChatEmpty) | [.GetChatsOut](#GetChatsOut) |  |
 | GetRecentMessages | [.ChatEmpty](#ChatEmpty) | [.GetRecentMessagesOut](#GetRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |

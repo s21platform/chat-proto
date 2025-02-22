@@ -3,7 +3,7 @@ syntax = "proto3";
 option go_package = "./chat-proto";
 
 service ChatService {
-    rpc CreateChat(CreateChatIn) returns (CreateChatOut){};
+    rpc CreatePrivateChat(CreatePrivateChatIn) returns (CreatePrivateChatOut){};
     rpc GetChats(ChatEmpty) returns (GetChatsOut){};
     rpc GetRecentMessages(ChatEmpty) returns (GetRecentMessagesOut){};
 
@@ -13,11 +13,11 @@ service ChatService {
 
 message ChatEmpty {}
 
-message CreateChatIn {
+message CreatePrivateChatIn {
     string companion_uuid = 1;  // uuid второго пользователя, с которым будет идти переписка
 }
 
-message CreateChatOut {
+message CreatePrivateChatOut {
     string new_chat_uuid = 1; // uuid созданного чата
 }
 
