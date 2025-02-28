@@ -5,7 +5,7 @@ option go_package = "./chat-proto";
 service ChatService {
     rpc CreatePrivateChat(CreatePrivateChatIn) returns (CreatePrivateChatOut){};
     rpc GetChats(ChatEmpty) returns (GetChatsOut){};
-    rpc GetPrivateRecentMessages(ChatEmpty) returns (GetPrivateRecentMessagesOut){};
+    rpc GetPrivateRecentMessages(GetPrivateRecentMessagesIn) returns (GetPrivateRecentMessagesOut){};
 
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
     rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
@@ -40,6 +40,10 @@ message Message {
     string updated_at = 4;      // время обновления
     string root_uuid = 5;       // uuid корневого сообщения
     string parent_uuid = 6;     // uuid сообщения, на которое идет прямой ответ
+}
+
+message GetPrivateRecentMessagesIn {
+    string chat_uuid = 1;   // uuid чата, из которого достаем сообщения
 }
 
 message GetPrivateRecentMessagesOut {
