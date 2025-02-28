@@ -13,6 +13,7 @@
     - [EditMessageIn](#-EditMessageIn)
     - [EditMessageOut](#-EditMessageOut)
     - [GetChatsOut](#-GetChatsOut)
+    - [GetPrivateRecentMessagesIn](#-GetPrivateRecentMessagesIn)
     - [GetPrivateRecentMessagesOut](#-GetPrivateRecentMessagesOut)
     - [Message](#-Message)
   
@@ -166,6 +167,21 @@
 
 
 
+<a name="-GetPrivateRecentMessagesIn"></a>
+
+### GetPrivateRecentMessagesIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| chat_uuid | [string](#string) |  | uuid чата, из которого достаем сообщения |
+
+
+
+
+
+
 <a name="-GetPrivateRecentMessagesOut"></a>
 
 ### GetPrivateRecentMessagesOut
@@ -216,7 +232,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreatePrivateChat | [.CreatePrivateChatIn](#CreatePrivateChatIn) | [.CreatePrivateChatOut](#CreatePrivateChatOut) |  |
 | GetChats | [.ChatEmpty](#ChatEmpty) | [.GetChatsOut](#GetChatsOut) |  |
-| GetPrivateRecentMessages | [.ChatEmpty](#ChatEmpty) | [.GetPrivateRecentMessagesOut](#GetPrivateRecentMessagesOut) |  |
+| GetPrivateRecentMessages | [.GetPrivateRecentMessagesIn](#GetPrivateRecentMessagesIn) | [.GetPrivateRecentMessagesOut](#GetPrivateRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 | EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
 
