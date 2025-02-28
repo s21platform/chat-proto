@@ -42,6 +42,10 @@ message Message {
     string parent_uuid = 6;     // uuid сообщения, на которое идет прямой ответ
 }
 
+message GetPrivateRecentMessagesIn {
+    string chat_uuid = 1;   // uuid чата, из которого достаем сообщения
+}
+
 message GetPrivateRecentMessagesOut {
     repeated Message messages = 1;  // список сообщений
 }
@@ -63,8 +67,4 @@ message EditMessageIn {
 message EditMessageOut {
     string uuid_message = 1;    // uuid измененного сообщения
     string new_content = 2;     // новый текст сообщения
-}
-
-message GetPrivateRecentMessagesIn {
-    string chat_uuid = 1;   // uuid чата, из которого достаем сообщения
 }
