@@ -4,7 +4,7 @@ option go_package = "./chat-proto";
 
 service ChatService {
     rpc CreatePrivateChat(CreatePrivateChatIn) returns (CreatePrivateChatOut){};
-    rpc GetPrivateChats(ChatEmpty) returns (GetPrivateChatsOut){};
+    rpc GetChats(ChatEmpty) returns (GetChatsOut){};
     rpc GetPrivateRecentMessages(GetPrivateRecentMessagesIn) returns (GetPrivateRecentMessagesOut){};
 
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
@@ -28,7 +28,7 @@ message Chat {
     string deleted_by = 4;              // UUID пользователя, удалившего чат
 }
 
-message GetPrivateChatsOut {
+message GetChatsOut {
     repeated Chat chats = 1;  // Список чатов
 }
 

@@ -12,7 +12,7 @@
     - [DeleteMessageOut](#-DeleteMessageOut)
     - [EditMessageIn](#-EditMessageIn)
     - [EditMessageOut](#-EditMessageOut)
-    - [GetPrivateChatsOut](#-GetPrivateChatsOut)
+    - [GetChatsOut](#-GetChatsOut)
     - [GetPrivateRecentMessagesIn](#-GetPrivateRecentMessagesIn)
     - [GetPrivateRecentMessagesOut](#-GetPrivateRecentMessagesOut)
     - [Message](#-Message)
@@ -151,9 +151,9 @@
 
 
 
-<a name="-GetPrivateChatsOut"></a>
+<a name="-GetChatsOut"></a>
 
-### GetPrivateChatsOut
+### GetChatsOut
 
 
 
@@ -230,7 +230,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreatePrivateChat | [.CreatePrivateChatIn](#CreatePrivateChatIn) | [.CreatePrivateChatOut](#CreatePrivateChatOut) |  |
-| GetPrivateChats | [.ChatEmpty](#ChatEmpty) | [.GetPrivateChatsOut](#GetPrivateChatsOut) |  |
+| GetChats | [.ChatEmpty](#ChatEmpty) | [.GetChatsOut](#GetChatsOut) |  |
 | GetPrivateRecentMessages | [.GetPrivateRecentMessagesIn](#GetPrivateRecentMessagesIn) | [.GetPrivateRecentMessagesOut](#GetPrivateRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
 | EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
