@@ -38,11 +38,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| last_message | [string](#string) |  | Контент последнего сообщения |
-| chat_name | [string](#string) |  | Название чата |
-| avatar_url | [string](#string) |  | Аватарка чата |
-| last_message_timestamp | [string](#string) |  | Время отправки последнего сообщения |
 | chat_uuid | [string](#string) |  | UUID чата |
+| created_at | [string](#string) |  | Время создания чата |
+| deleted_at | [string](#string) |  | Время удаления чата |
+| deleted_by | [string](#string) |  | UUID пользователя, удалившего чат |
 
 
 
