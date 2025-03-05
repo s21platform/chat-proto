@@ -8,7 +8,7 @@ service ChatService {
     rpc GetPrivateRecentMessages(GetPrivateRecentMessagesIn) returns (GetPrivateRecentMessagesOut){};
 
     rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
-    rpc EditMessage(EditMessageIn) returns (EditMessageOut){};
+    rpc EditPrivateMessage(EditPrivateMessageIn) returns (EditPrivateMessageOut){};
 }
 
 message ChatEmpty {}
@@ -59,12 +59,13 @@ message DeleteMessageOut {
     bool deletion_status = 1;    // статус удаления
 }
 
-message EditMessageIn {
+message EditPrivateMessageIn {
     string uuid_message = 1;    // uuid сообщения
     string new_content = 2;     // новый текст сообщения
 }
 
-message EditMessageOut {
+message EditPrivateMessageOut {
     string uuid_message = 1;    // uuid измененного сообщения
     string new_content = 2;     // новый текст сообщения
+    string updated_at = 3;      // время обновления сообщения
 }
