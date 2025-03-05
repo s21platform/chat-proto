@@ -23,7 +23,7 @@ const (
 	ChatService_GetChats_FullMethodName                 = "/ChatService/GetChats"
 	ChatService_GetPrivateRecentMessages_FullMethodName = "/ChatService/GetPrivateRecentMessages"
 	ChatService_DeleteMessage_FullMethodName            = "/ChatService/DeleteMessage"
-	ChatService_EditMessage_FullMethodName              = "/ChatService/EditMessage"
+	ChatService_EditPrivateMessage_FullMethodName       = "/ChatService/EditPrivateMessage"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -34,7 +34,7 @@ type ChatServiceClient interface {
 	GetChats(ctx context.Context, in *ChatEmpty, opts ...grpc.CallOption) (*GetChatsOut, error)
 	GetPrivateRecentMessages(ctx context.Context, in *GetPrivateRecentMessagesIn, opts ...grpc.CallOption) (*GetPrivateRecentMessagesOut, error)
 	DeleteMessage(ctx context.Context, in *DeleteMessageIn, opts ...grpc.CallOption) (*DeleteMessageOut, error)
-	EditMessage(ctx context.Context, in *EditMessageIn, opts ...grpc.CallOption) (*EditMessageOut, error)
+	EditPrivateMessage(ctx context.Context, in *EditPrivateMessageIn, opts ...grpc.CallOption) (*EditPrivateMessageOut, error)
 }
 
 type chatServiceClient struct {
@@ -85,10 +85,10 @@ func (c *chatServiceClient) DeleteMessage(ctx context.Context, in *DeleteMessage
 	return out, nil
 }
 
-func (c *chatServiceClient) EditMessage(ctx context.Context, in *EditMessageIn, opts ...grpc.CallOption) (*EditMessageOut, error) {
+func (c *chatServiceClient) EditPrivateMessage(ctx context.Context, in *EditPrivateMessageIn, opts ...grpc.CallOption) (*EditPrivateMessageOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditMessageOut)
-	err := c.cc.Invoke(ctx, ChatService_EditMessage_FullMethodName, in, out, cOpts...)
+	out := new(EditPrivateMessageOut)
+	err := c.cc.Invoke(ctx, ChatService_EditPrivateMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +103,7 @@ type ChatServiceServer interface {
 	GetChats(context.Context, *ChatEmpty) (*GetChatsOut, error)
 	GetPrivateRecentMessages(context.Context, *GetPrivateRecentMessagesIn) (*GetPrivateRecentMessagesOut, error)
 	DeleteMessage(context.Context, *DeleteMessageIn) (*DeleteMessageOut, error)
-	EditMessage(context.Context, *EditMessageIn) (*EditMessageOut, error)
+	EditPrivateMessage(context.Context, *EditPrivateMessageIn) (*EditPrivateMessageOut, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -126,8 +126,8 @@ func (UnimplementedChatServiceServer) GetPrivateRecentMessages(context.Context, 
 func (UnimplementedChatServiceServer) DeleteMessage(context.Context, *DeleteMessageIn) (*DeleteMessageOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMessage not implemented")
 }
-func (UnimplementedChatServiceServer) EditMessage(context.Context, *EditMessageIn) (*EditMessageOut, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditMessage not implemented")
+func (UnimplementedChatServiceServer) EditPrivateMessage(context.Context, *EditPrivateMessageIn) (*EditPrivateMessageOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EditPrivateMessage not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -222,20 +222,20 @@ func _ChatService_DeleteMessage_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ChatService_EditMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditMessageIn)
+func _ChatService_EditPrivateMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EditPrivateMessageIn)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServiceServer).EditMessage(ctx, in)
+		return srv.(ChatServiceServer).EditPrivateMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatService_EditMessage_FullMethodName,
+		FullMethod: ChatService_EditPrivateMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).EditMessage(ctx, req.(*EditMessageIn))
+		return srv.(ChatServiceServer).EditPrivateMessage(ctx, req.(*EditPrivateMessageIn))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -264,8 +264,8 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ChatService_DeleteMessage_Handler,
 		},
 		{
-			MethodName: "EditMessage",
-			Handler:    _ChatService_EditMessage_Handler,
+			MethodName: "EditPrivateMessage",
+			Handler:    _ChatService_EditPrivateMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

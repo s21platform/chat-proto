@@ -10,8 +10,8 @@
     - [CreatePrivateChatOut](#-CreatePrivateChatOut)
     - [DeleteMessageIn](#-DeleteMessageIn)
     - [DeleteMessageOut](#-DeleteMessageOut)
-    - [EditMessageIn](#-EditMessageIn)
-    - [EditMessageOut](#-EditMessageOut)
+    - [EditPrivateMessageIn](#-EditPrivateMessageIn)
+    - [EditPrivateMessageOut](#-EditPrivateMessageOut)
     - [GetChatsOut](#-GetChatsOut)
     - [GetPrivateRecentMessagesIn](#-GetPrivateRecentMessagesIn)
     - [GetPrivateRecentMessagesOut](#-GetPrivateRecentMessagesOut)
@@ -120,9 +120,9 @@
 
 
 
-<a name="-EditMessageIn"></a>
+<a name="-EditPrivateMessageIn"></a>
 
-### EditMessageIn
+### EditPrivateMessageIn
 
 
 
@@ -136,9 +136,9 @@
 
 
 
-<a name="-EditMessageOut"></a>
+<a name="-EditPrivateMessageOut"></a>
 
-### EditMessageOut
+### EditPrivateMessageOut
 
 
 
@@ -146,6 +146,7 @@
 | ----- | ---- | ----- | ----------- |
 | uuid_message | [string](#string) |  | uuid измененного сообщения |
 | new_content | [string](#string) |  | новый текст сообщения |
+| updated_at | [string](#string) |  | время обновления сообщения |
 
 
 
@@ -234,7 +235,7 @@
 | GetChats | [.ChatEmpty](#ChatEmpty) | [.GetChatsOut](#GetChatsOut) |  |
 | GetPrivateRecentMessages | [.GetPrivateRecentMessagesIn](#GetPrivateRecentMessagesIn) | [.GetPrivateRecentMessagesOut](#GetPrivateRecentMessagesOut) |  |
 | DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
-| EditMessage | [.EditMessageIn](#EditMessageIn) | [.EditMessageOut](#EditMessageOut) |  |
+| EditPrivateMessage | [.EditPrivateMessageIn](#EditPrivateMessageIn) | [.EditPrivateMessageOut](#EditPrivateMessageOut) |  |
 
  
 
