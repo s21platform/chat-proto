@@ -8,8 +8,8 @@
     - [ChatEmpty](#-ChatEmpty)
     - [CreatePrivateChatIn](#-CreatePrivateChatIn)
     - [CreatePrivateChatOut](#-CreatePrivateChatOut)
-    - [DeleteMessageIn](#-DeleteMessageIn)
-    - [DeleteMessageOut](#-DeleteMessageOut)
+    - [DeletePrivateMessageIn](#-DeletePrivateMessageIn)
+    - [DeletePrivateMessageOut](#-DeletePrivateMessageOut)
     - [EditPrivateMessageIn](#-EditPrivateMessageIn)
     - [EditPrivateMessageOut](#-EditPrivateMessageOut)
     - [GetChatsOut](#-GetChatsOut)
@@ -89,9 +89,9 @@
 
 
 
-<a name="-DeleteMessageIn"></a>
+<a name="-DeletePrivateMessageIn"></a>
 
-### DeleteMessageIn
+### DeletePrivateMessageIn
 
 
 
@@ -105,9 +105,9 @@
 
 
 
-<a name="-DeleteMessageOut"></a>
+<a name="-DeletePrivateMessageOut"></a>
 
-### DeleteMessageOut
+### DeletePrivateMessageOut
 
 
 
@@ -234,7 +234,7 @@
 | CreatePrivateChat | [.CreatePrivateChatIn](#CreatePrivateChatIn) | [.CreatePrivateChatOut](#CreatePrivateChatOut) |  |
 | GetChats | [.ChatEmpty](#ChatEmpty) | [.GetChatsOut](#GetChatsOut) |  |
 | GetPrivateRecentMessages | [.GetPrivateRecentMessagesIn](#GetPrivateRecentMessagesIn) | [.GetPrivateRecentMessagesOut](#GetPrivateRecentMessagesOut) |  |
-| DeleteMessage | [.DeleteMessageIn](#DeleteMessageIn) | [.DeleteMessageOut](#DeleteMessageOut) |  |
+| DeletePrivateMessage | [.DeletePrivateMessageIn](#DeletePrivateMessageIn) | [.DeletePrivateMessageOut](#DeletePrivateMessageOut) |  |
 | EditPrivateMessage | [.EditPrivateMessageIn](#EditPrivateMessageIn) | [.EditPrivateMessageOut](#EditPrivateMessageOut) |  |
 
  

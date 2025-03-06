@@ -7,7 +7,7 @@ service ChatService {
     rpc GetChats(ChatEmpty) returns (GetChatsOut){};
     rpc GetPrivateRecentMessages(GetPrivateRecentMessagesIn) returns (GetPrivateRecentMessagesOut){};
 
-    rpc DeleteMessage(DeleteMessageIn) returns (DeleteMessageOut){};
+    rpc DeletePrivateMessage(DeletePrivateMessageIn) returns (DeletePrivateMessageOut){};
     rpc EditPrivateMessage(EditPrivateMessageIn) returns (EditPrivateMessageOut){};
 }
 
@@ -50,12 +50,12 @@ message GetPrivateRecentMessagesOut {
     repeated Message messages = 1;  // список сообщений
 }
 
-message DeleteMessageIn {
+message DeletePrivateMessageIn {
     string uuid_message = 1;        // uuid сообщения
-    string mode = 2;        // тип удаления: у всех или у себя
+    string mode = 2;                // тип удаления: у всех или у себя
 }
 
-message DeleteMessageOut {
+message DeletePrivateMessageOut {
     bool deletion_status = 1;    // статус удаления
 }
 
