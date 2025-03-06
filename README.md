@@ -97,7 +97,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_message | [string](#string) |  | uuid сообщения |
+| chat_uuid | [string](#string) |  | uuid чата |
+| message_uuid | [string](#string) |  | uuid сообщения |
 | mode | [string](#string) |  | тип удаления: у всех или у себя |
 
 
@@ -128,7 +129,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_message | [string](#string) |  | uuid сообщения |
+| chat_uuid | [string](#string) |  | uuid чата |
+| message_uuid | [string](#string) |  | uuid сообщения |
 | new_content | [string](#string) |  | новый текст сообщения |
 
 
@@ -144,7 +146,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| uuid_message | [string](#string) |  | uuid измененного сообщения |
+| message_uuid | [string](#string) |  | uuid измененного сообщения |
 | new_content | [string](#string) |  | новый текст сообщения |
 | updated_at | [string](#string) |  | время обновления сообщения |
 

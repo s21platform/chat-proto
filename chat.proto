@@ -51,8 +51,9 @@ message GetPrivateRecentMessagesOut {
 }
 
 message DeletePrivateMessageIn {
-    string uuid_message = 1;        // uuid сообщения
-    string mode = 2;                // тип удаления: у всех или у себя
+    string chat_uuid = 1;           // uuid чата
+    string message_uuid = 2;        // uuid сообщения
+    string mode = 3;                // тип удаления: у всех или у себя
 }
 
 message DeletePrivateMessageOut {
@@ -60,12 +61,13 @@ message DeletePrivateMessageOut {
 }
 
 message EditPrivateMessageIn {
-    string uuid_message = 1;    // uuid сообщения
-    string new_content = 2;     // новый текст сообщения
+    string chat_uuid = 1;           // uuid чата
+    string message_uuid = 2;        // uuid сообщения
+    string new_content = 3;         // новый текст сообщения
 }
 
 message EditPrivateMessageOut {
-    string uuid_message = 1;    // uuid измененного сообщения
+    string message_uuid = 1;    // uuid измененного сообщения
     string new_content = 2;     // новый текст сообщения
     string updated_at = 3;      // время обновления сообщения
 }
